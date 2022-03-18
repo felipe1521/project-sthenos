@@ -1,0 +1,78 @@
+<div class="pantalla-completa container-fluid py-4 bg-secondary min-vh-100">
+  <div class="row">
+    <div class="col-3 position-fixed">
+      <div class="my-2">
+        <h3 class="text-center">Categorias</h3>
+        <div class="btn-group-vertical w-100">
+          <button type="button" class="btn bg-dark text-info btn-outline-info"
+          (click)="buscarCategoria('61df81a3dbfd1e10cd99d254')">Empuje</button>
+          <button type="button" class="btn bg-dark text-info btn-outline-info"
+          (click)="buscarCategoria('61df81a3dbfd1e10cd99d255')">Jalado</button>
+          <button type="button" class="btn bg-dark text-info btn-outline-info"
+          (click)="buscarCategoria('6213f7c509b3d72422d9e571')">Fondos</button>
+          <button type="button" class="btn bg-dark text-info btn-outline-info"
+          (click)="buscarCategoria('61df81a3dbfd1e10cd99d256')">Isometricos</button>
+          <button type="button" class="btn bg-dark text-info btn-outline-info" (click)="ejercicioTodos()">Todos</button>
+        </div>
+      </div>
+      <div class="mt-5">
+        <form class="d-flex justify-content-between" (ngSubmit) = "buscarEjercicio()">
+          <input class="form-control bg-dark text-info" type="search" [(ngModel)]="getejercicio.nombre" name="nombre" placeholder="Buscar">
+          <button class="btn btn-dark text-info" type="submit">Buscar</button>
+        </form>
+      </div>
+      <div class="mt-4 text-center">
+        <h2>{{categoria?.nombre}}</h2>
+        <img class="img-fluid bg-white" style="height: 250px;" src="{{categoria?.url}}">
+      </div>
+    </div>
+    <div class="col offset-3">
+      <div class="row justify-content-start m-2">
+  
+        <div class="card bg-dark text-info col-sm-3 m-2" *ngFor="let ejercicio of ejercicios"> 
+          <h4 class="card-header text-center">{{ejercicio.nombre}}</h4>
+          <p class="card-title"><a [routerLink]="['detail', ejercicio._id]" 
+            class="btn btn-primary w-100 my-2">Ver Detalles</a></p>
+        </div>
+      
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Contenedor para la version Móvil  -->
+<div class="pantalla-movil container-fluid py-4 bg-secondary min-vh-100">
+  <div>
+    <h2 class="text-center">Categorias de Ejercicios</h2>
+    <div class="d-flex justify-content-between">
+      <div class="dropdown">
+        <button class="btn btn-dark text-info dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          Categorias
+        </button>
+        <ul class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item text-info" (click)="buscarCategoria('61df81a3dbfd1e10cd99d254')">Empuje</a></li>
+          <li><a class="dropdown-item text-info" (click)="buscarCategoria('61df81a3dbfd1e10cd99d255')">Jalado</a></li>
+          <li><a class="dropdown-item text-info" (click)="buscarCategoria('6213f7c509b3d72422d9e571')">Fondos</a></li>
+          <li><a class="dropdown-item text-info" (click)="buscarCategoria('61df81a3dbfd1e10cd99d256')">Isometricos</a></li>
+          <li><a class="dropdown-item text-info" (click)="ejercicioTodos()">Todos</a></li>
+        </ul>
+      </div>
+      <form class="d-flex justify-content-between ms-2" (ngSubmit) = "buscarEjercicio()">
+        <input class="form-control bg-dark text-info" type="search" [(ngModel)]="getejercicio.nombre" name="nombre" placeholder="Buscar">
+        <button class="btn btn-dark text-info" type="submit">Buscar</button>
+      </form>
+    </div>
+  </div>
+  <div>
+    <div class="d-flex flex-column align-items-center mt-2">
+      <h2>{{categoria?.nombre}}</h2>
+      <img class="img-fluid" src="{{categoria?.url}}">
+    </div>
+    <div class="row me-1" *ngFor="let ejercicio of ejercicios">
+      <div class="card bg-dark text-info col-sm m-2"> 
+        <h4 class="card-header">{{ ejercicio.nombre }}</h4>
+        <p class="card-title">{{ ejercicio.descripcion }}</p>
+      </div>
+    </div>
+  </div>
+</div>

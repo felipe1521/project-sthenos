@@ -1,0 +1,37 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand ms-5 fs-3 text-info" routerLink="/">Sthenos</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse ms-5" id="navbarScroll">
+      <ul class="navbar-nav my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100%;">
+        <li class="nav-item">
+          <a class="nav-link text-info" routerLink="exercises">Ejercicios</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-info" *ngIf="estaLogeado()" routerLink="records">Records</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-info" *ngIf="estaLogeado()" routerLink="planning">Planificación</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-info" *ngIf="!estaLogeado()" routerLink="signup">Registrarse</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-info" *ngIf="!estaLogeado()" routerLink="signin">Ingresar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-info" *ngIf="estaLogeado()" routerLink="profile">Perfil</a>
+        </li>
+        <li>
+          <i class="bi bi-list mobile-nav-toggle"></i>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-info" *ngIf="estaLogeado()" (click)="cerrarSesion()" style="cursor: pointer;">Cerrar Sesión</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

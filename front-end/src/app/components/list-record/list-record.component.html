@@ -1,0 +1,99 @@
+<div class="container-fluid py-4 bg-secondary vh-100">
+  <div class="row d-flex justify-content-around">
+    <section class="col-sm mx-2">
+      <h3 class="text-center">Registro de Records</h3> 
+      <div>
+        <form (ngSubmit) = "buscarRecords()" class="d-flex justify-content-between">
+          <select [(ngModel)]="byEjercicio" class="form-control bg-dark text-info mx-2" name="byEjercicio">
+            <option [ngValue]="ejercicio" *ngFor="let ejercicio of ejercicios">{{ ejercicio.nombre }}</option>
+          </select>
+          <button type="submit" class="btn btn-dark text-info w-50">Buscar</button> 
+        </form>
+      </div>
+      <div class="row pt-2">
+        <table class="table table-hover table-dark text-info">
+          <thead>
+          <tr>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">+Carga</th>
+            <th scope="col">Borrar</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let record of records">
+            <td scope="row">{{record.cantidad}}</td>
+            <td scope="row">{{record.creacion | date:'short'}}</td>
+            <th scope="row">{{record.sobrecarga || 0}}</th>
+            <td scope="row"><button class="btn btn-danger" (click)="deleteRecord(record._id)">Borrar</button></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <section class="col-sm">  
+      <div class="d-grid pt-2 w-75 mx-auto">
+        <div class="alert alert-danger " role="alert" *ngIf="errorGuardadoRecord()">
+          <p>Solo puede crear un record nuevo si hay una diferencia mayor a 7 dias del record anterior.</p>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>
+        <!-- Modal para agregar Record (es un Div oculto el cual realiza la funcion de POP-UP) -->
+        <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark text-info">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalToggleLabel">Agregar un Record</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form (ngSubmit) = "saveRecord()">
+                  <div class="form-group">
+                    <label for="ejercicio">Ejercicio:</label>
+                    <select [(ngModel)]="record.ejercicio" class="form-control bg-dark text-info" name="ejercicio">
+                        <option [ngValue]="ejercicio" *ngFor="let ejercicio of ejercicios">{{ ejercicio.nombre }}</option>
+                    </select>   
+                  </div>
+                  <div class="form-group">
+                    <label for="cantidad">Cantidad:</label>
+                    <input [(ngModel)]="record.cantidad" type="number" class="form-control bg-dark text-info" name="cantidad" placeholder="Cantidad">
+                  </div>
+                  <div class="form-group d-flex justify-content-between">
+                    <p class="my-auto">(Opcional)</p>
+                    <div class="d-flex w-75">
+                      <p class="my-auto pe-1">+Kg</p>
+                      <input [(ngModel)]="record.sobrecarga" type="number" class="form-control bg-dark text-info" name="sobrecarga" placeholder="Sobrecarga">
+                    </div>
+                  </div>
+                  <button type="submit" data-bs-dismiss="modal" aria-label="Guardar" class="btn btn-primary w-100 mt-3">Guardar</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal para agregar Record (es un Div oculto el cual realiza la funcion de POP-UP) -->
+        <a class="btn btn-dark text-info" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Agregar un Record</a>
+      </div>
+      <!--<div class="card text-info bg-dark mt-4 w-75 mx-auto">-->
+      <div class="container w-75 mt-3">
+        <div class="row bg-dark">
+          <div class="col border border-info"><h3 class="text-info text-center">Estadisticas</h3></div>
+        </div>
+        <div class="row bg-dark border border-info py-2">
+          <div class="col"><h5 class="text-info">Máximo</h5></div>
+          <div class="col"><h5 class="text-info">{{estadistica.maximo}}</h5></div>
+        </div>
+        <div class="row bg-dark border border-info py-2">
+          <div class="col"><h5 class="text-info">Mínimo</h5></div>
+          <div class="col"><h5 class="text-info">{{estadistica.minimo}}</h5></div>
+        </div>
+        <div class="row bg-dark border border-info py-2">
+          <div class="col"><h5 class="text-info">Promedio</h5></div>
+          <div class="col"><h5 class="text-info">{{estadistica.promedio}}</h5></div>
+        </div>
+        <div class="row bg-dark border border-info py-2">
+          <div class="col"><h5 class="text-info">Estado</h5></div>
+          <div class="col"><h5 class="text-info">{{estadistica.estado}}</h5></div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

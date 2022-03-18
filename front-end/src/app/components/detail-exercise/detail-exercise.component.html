@@ -1,0 +1,39 @@
+<div class="container-fluid py-4 bg-secondary vh-100">
+    <div class="row mt-2"></div>
+    <button (click)="volver()" class="btn btn-primary px-5">Volver</button>
+    <div class="row mx-auto mt-2">
+        <div class="col col-sm-3 mt-4">
+            <div class="card bg-dark">
+                <div class="card-header"><h2 class="text-center text-info fw-bolder">{{ejercicio.nombre}}-</h2>
+                    <h2 class="text-center text-info fw-bolder">{{ejercicio.nombreingles}}</h2></div>
+                <div class="card-body">
+                    <p class="text-start text-info fw-bolder">Dificultad: {{ejercicio.dificultad}}</p>
+                    <p class="text-justify text-info fw-bolder">{{ejercicio.descripcion}}</p>
+                </div>
+            </div>
+            
+            
+        </div>
+        <div class="col col-sm-3 mt-4 mx-4 text-center">
+            <h3 class="text-center fw-bolder">Referencia Visual</h3>
+            <img class="img-fluid mt-4 bg-white" src="{{ejercicio?.url}}" alt="ejercicio">
+        </div>
+        <div class="col col-sm-1 mt-4"></div>
+        <div class="col col-sm-4 mt-4">
+            <h3 class="text-center fw-bolder">Progresión Recomendada</h3>
+            <div class="list-group mt-4">
+                <a class="list-group-item list-group-item-action list-group-item-success">{{ejercicio.progresion1}}</a>
+                <a class="list-group-item list-group-item-action list-group-item-primary">{{ejercicio.progresion2}}</a>
+                <a class="list-group-item list-group-item-action list-group-item-secondary">{{ejercicio.progresion3}}</a>
+            </div>
+            <h4 class="mt-4 fw-bolder">Información Extra</h4>
+            <ul>
+                <li class="fw-bolder">Para empezar esta progresión es general, por lo que este ejercicio no es el objetivo final de la recomendación.</li>
+                <li class="fw-bolder mt-1">Esta recomendación le ayudará a poder conseguir realizar este ejercicio en cuestión de manera mas rapida.</li>
+                <li class="fw-bolder mt-1">Ademas le puede servir para conocer otros ejercicios mas complejos, que podría realizar en el futuro.</li>
+                <li class="fw-bolder mt-1">Tambien se aconseja realizar otros ejercicios complementarios, principalmente para los ejercicios Avanzados, 
+                                    los cuales requerirán de mucho tiempo para que sus musculos y tendones se acostumbren.</li>
+            </ul>
+        </div>
+    </div>
+</div>

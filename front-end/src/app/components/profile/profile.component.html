@@ -1,0 +1,37 @@
+<div class="container-fluid py-5 bg-secondary min-vh-100">
+    <div class="row align-items-center">
+        <div class="col-12">
+            <div class="row mx-2">
+                <div class="col-lg-4 bg-light border border-1 border-info rounded-2">
+                    <div class="text-center">
+                        <img class="img-fluid" style="height: 200px;" src="assets/img/usuario.png" alt="usuario">
+                    </div>
+                    <h3 class="text-center">{{perfil.nombre}} {{perfil.apellido}}</h3>
+                    <div class="btn-group-vertical w-100 py-2">
+                        <a routerLink="/records" class="btn bg-dark text-info btn-outline-info">Records</a>
+                        <button type="button" class="btn bg-dark text-info btn-outline-info" (click)="editClave(perfil._id)">Cambiar Clave</button>
+                        <button type="button" class="btn bg-dark text-info btn-outline-info" (click)="cerrarSesion()">Cerrar Sesion</button>
+                    </div>
+                </div>
+                <div class="col-lg-8 bg-light border border-1 border-info rounded-2">
+                    <router-outlet></router-outlet> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--
+    <form action="">
+        <div class="form-group">
+            <input type="password" class="form-control" [(ngModel)]="actual" id="claveactual" placeholder="Ingrese su clave actual...">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" [(ngModel)]="usuario.clave" id="clave" placeholder="Ingrese su nueva clave...">
+        </div>
+        <button type="submit" class="btn btn-primary">Cambiar</button>
+    </form>
+-->
+
+
+

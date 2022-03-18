@@ -1,0 +1,36 @@
+<div class="card bg-light">
+  <form (ngSubmit) = "editarPerfil()" class="card-body">
+    <h1 class="text-center mb-3">Modifique sus Datos</h1>
+    <div class="row my-1">
+      <div class="col-sm-12 d-flex justify-content-around">
+        <label class="mx-auto">Correo</label>
+        <input [(ngModel)]="usuario.correo" class="form-control w-75" name="correo" type="email">
+      </div>
+    </div>
+    <div class="row my-1">
+      <div class="col-sm-12 d-flex justify-content-around">
+        <label class="mx-auto">Nombre</label>
+        <input [(ngModel)]="perfil.nombre" class="form-control w-75" name="nombre" type="text">
+      </div>
+    </div>
+    <div class="row my-1">
+      <div class="col-sm-12 d-flex justify-content-around">
+        <label class="mx-auto">Apellido</label>
+        <input [(ngModel)]="perfil.apellido" class="form-control w-75" name="apellido" type="text">
+      </div>
+    </div>
+    <div class="row my-1">
+      <div class="col-sm-12 d-flex justify-content-around">
+        <label class="mx-auto">Telefono</label>
+        <input [(ngModel)]="perfil.telefono" class="form-control w-75" name="telefono" type="text">
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-sm-12 d-flex justify-content-around">
+        <button type="submit" class="btn btn-danger">Guardar</button>
+        <a routerLink="/profile/" class="btn bg-dark text-info btn-outline-info">Volver</a>
+      </div>
+    </div>
+  </form>
+</div>
+  

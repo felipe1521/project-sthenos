@@ -1,0 +1,67 @@
+// MongoDB Playground
+// To disable this template go to Settings | MongoDB | Use Default Template For Playground.
+// Make sure you are connected to enable completions and to be able to run a playground.
+// Use Ctrl+Space inside a snippet or a string literal to trigger completions.
+
+// Select the database to use.
+use('db_sthenos');
+db.rutinadias.find();
+
+use('db_sthenos');
+db.records.remove({});
+use('db_sthenos');
+db.rutinas.remove({});
+
+use('db_sthenos');
+db.ejercicios.find().sort({categoria: 1});
+
+db.ejercicios.find({nombre: {$regex: /flexiones/}});
+
+db.perfils.insertMany([
+  { 'nombre': 'Felipe', 'apellido': 'Contreras', 'peso': 63, 'estatura': 179, 'usuario': ObjectId("61e625a67b7a1e24f140817d") },
+]);
+
+db.usuarios.insertMany([
+  { 'correo': 'felipe43@gmail.com', 'clave': '12345678', 'rol': ObjectId("61e62271322b49dbe7d2d45c") },
+]);
+
+db.rols.insertMany([
+  { 'nombre': 'Usuario' },
+  { 'nombre': 'Administrador' },
+]);
+
+db.usuario.findOne({correo: 'felipe43@gmail.com'});
+
+db.ejercicios.insertMany([
+  { 'nombre': 'Flexiones', 'dificultad': 'Principiante', 'categoria': ObjectId("61df81a3dbfd1e10cd99d254") },
+  { 'nombre': 'Pseudo Flexiones', 'dificultad': 'Intermedio', 'categoria': ObjectId("61df81a3dbfd1e10cd99d254") },
+  { 'nombre': 'Dominadas Pronas', 'dificultad': 'Intermedio', 'categoria': ObjectId("61df81a3dbfd1e10cd99d255") },
+  { 'nombre': 'Dominadas Supinas', 'dificultad': 'Principiante', 'categoria': ObjectId("61df81a3dbfd1e10cd99d255") },
+  { 'nombre': 'Palanca Frontal', 'dificultad': 'Avanzado', 'categoria': ObjectId("61df81a3dbfd1e10cd99d256") },
+  { 'nombre': 'Plancha', 'dificultad': 'Avanzado', 'categoria': ObjectId("61df81a3dbfd1e10cd99d256") },
+]);
+
+db.categorias.insertMany([
+  { 'nombre': 'Empuje', 'medida': 'Reps', 'descripcion': 'Repeticiones' },
+  { 'nombre': 'Jalado', 'medida': 'Reps', 'descripcion': 'Repeticiones' },
+  { 'nombre': 'Isometrico', 'medida': 'Segs', 'descripcion': 'Segundos' },
+]);
+
+
+
+
+
+
+// Run a find command to view items sold on April 4th, 2014.
+db.sales.find({ date: { $gte: new Date('2014-04-04'), $lt: new Date('2014-04-05') } });
+
+// Build an aggregation to view total sales for each product in 2014.
+const aggregation = [
+  { $match: { date: { $gte: new Date('2014-01-01'), $lt: new Date('2015-01-01') } } },
+  { $group: { _id: '$item', totalSaleAmount: { $sum: { $multiply: [ '$price', '$quantity' ] } } } }
+];
+
+// Run the aggregation and open a cursor to the results.
+// Use toArray() to exhaust the cursor to return the whole result set.
+// You can use hasNext()/next() to iterate through the cursor page by page.
+db.sales.aggregate(aggregation);

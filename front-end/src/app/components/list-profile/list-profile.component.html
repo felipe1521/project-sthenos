@@ -1,0 +1,45 @@
+<div class="card bg-light">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-sm-3">
+        <h6 class="">Nombre</h6>
+      </div>
+      <div class="col-sm-9">
+        {{ perfil.nombre }}
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-sm-3">
+        <h6 class="mb-0">Apellido</h6>
+      </div>
+      <div class="col-sm-9">
+        {{ perfil.apellido }}
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-sm-3">
+        <h6 class="mb-0">Correo</h6>
+      </div>
+      <div class="col-sm-9">
+        {{ perfil.usuario?.correo }}
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-sm-3">
+          <h6 class="mb-0">Teléfono</h6>
+        </div>
+        <div class="col-sm-9">
+            {{ perfil.telefono }}
+        </div>
+      </div>
+      <hr>
+    <div class="row">
+      <div class="col-sm-12">
+        <button (click)="editPerfil(perfil._id)" class="btn bg-dark text-info btn-outline-info w-100">Editar Datos</button>
+      </div>
+    </div>
+  </div>
+</div>
