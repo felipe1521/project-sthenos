@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const router = Router();
 const Rutina = require('../models/Rutina');
+const Perfil = require('../models/Perfil');
 
 
 router.get('/find', async (req,res) => {
@@ -25,14 +26,14 @@ router.delete('/drop/:_id', async (req,res) => {
     res.send({message: 'Se ha Eliminado la rutina Completa'});
 });
 
-router.delete('/finish/:_id', async (req,res) => {
-    //Truncando la coleccion
-    await Rutina.remove({_id: { $ne: req.params._id }});
-    await RutinaDia.remove({rutina: { $ne: req.params._id }});
+router.post('/finish/:_id', async (req,res) => {
+    console.log(req.params._id);
+    const perfil = await Perfil.findById(req.params._id);
+    
+    await Rutina.updateMany({_id: { $ne: req.body._id }, perfil: perfil }, {$set: {habilitada: false}});
     //Habilitando la rutina
-    await Rutina.findOneAndUpdate({habilitada: true});
+    await Rutina.updateOne({_id: req.body._id }, {$set: {habilitada: true}});
     res.send({message: 'Se ha Habilitado la rutina Completa'});
 });
-
 
 module.exports = router;

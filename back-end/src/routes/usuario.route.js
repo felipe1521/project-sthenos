@@ -21,8 +21,8 @@ router.post('/signup', async (req, res) => {
         usuario: await Usuario.findOne({correo: usuario.correo})
     });
     await perfil.save();
-    const token = jwt.sign({ id: usuario._id}, 'monkyena');
-    res.json({token: token, rol: usuario.rol});
+    const token = jwt.sign({ id: usuario._id}, 'secretojwt');
+    res.status(200).json({token: token});
 });
 
 router.post('/signin', async (req, res) => {
