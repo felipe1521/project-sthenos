@@ -24,8 +24,11 @@ export class FormSignupComponent implements OnInit {
 
   public registrarUsuario() {
     this.perfil.usuario = this.usuario;
-    this.service.signupUsuario(this.perfil).subscribe(
-      data => console.log("Se ha registrado Correctmente el usuario."),
+    this.service.signupUsuario(this.perfil).subscribe(data => {
+        console.log("Se ha registrado Correctmente el usuario.");
+        sessionStorage.setItem('token',data.token);
+        this.router.navigate(['/']);
+      },
       err => console.log("Se ha producido un error: "+err)
     );
   }

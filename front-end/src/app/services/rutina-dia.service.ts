@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Perfil } from '../models/perfil';
 import { RutinaDia } from '../models/rutina-dia';
 
 @Injectable({
@@ -16,8 +17,8 @@ export class RutinaDiaService {
     return this.http.get<RutinaDia[]>(`${this.url}/all`);
   }
 
-  public getRutinaDiaByDia(dia: String | undefined): Observable<RutinaDia[]> {
-    return this.http.get<RutinaDia[]>(`${this.url}/dia/${dia}`);
+  public getRutinaDiaByDia(dia: String | undefined,perfil: Perfil): Observable<RutinaDia[]> {
+    return this.http.post<RutinaDia[]>(`${this.url}/dia/${dia}`,perfil);
   }
 
   public addRutinaDia(RutinaDia: RutinaDia): Observable<RutinaDia> {

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Perfil } from '../models/perfil';
 import { Rutina } from '../models/rutina';
 
 @Injectable({
@@ -24,8 +25,8 @@ export class RutinaService {
     return this.http.post<Rutina>(`${this.url}/add`,Rutina);
   }
 
-  public finishRutina(id: string | undefined): Observable<void> {
-    return this.http.delete<void>(`${this.url}/finish/${id}`);
+  public finishRutina(id: Perfil | undefined, rutina: Rutina): Observable<void> {
+    return this.http.post<void>(`${this.url}/finish/${id}`,rutina);
   }
 
   public dropRutina(id: string | undefined): Observable<void> {

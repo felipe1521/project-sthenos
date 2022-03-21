@@ -30,41 +30,40 @@ export class ListPlanningComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.perfil = new Perfil();
     const token = sessionStorage["token"];
     this.usuarioService.tokenUsuario(token).subscribe(data => {
       this.perfil = data;
-      console.log(this.perfil);
-    }, error => console.log(error));
-
-
-    this.rutinadiaService.getRutinaDiaByDia('Lunes').subscribe(
-      data => this.rutinaLunes = data
-      ,error => console.log(error)
-    );
-    this.rutinadiaService.getRutinaDiaByDia('Martes').subscribe(
-      data => this.rutinaMartes = data
-      ,error => console.log(error)
-    );
-    this.rutinadiaService.getRutinaDiaByDia('Miercoles').subscribe(
-      data => this.rutinaMiercoles = data
-      ,error => console.log(error)
-    );
-    this.rutinadiaService.getRutinaDiaByDia('Jueves').subscribe(
-      data => this.rutinaJueves = data
-      ,error => console.log(error)
-    );
-    this.rutinadiaService.getRutinaDiaByDia('Viernes').subscribe(
-      data => this.rutinaViernes = data
-      ,error => console.log(error)
-    );
-    this.rutinadiaService.getRutinaDiaByDia('Sabado').subscribe(
-      data => this.rutinaSabado = data
-      ,error => console.log(error)
-    );
-    this.rutinadiaService.getRutinaDiaByDia('Domingo').subscribe(
-      data => this.rutinaDomingo = data
-      ,error => console.log(error)
-    );
+      
+      this.rutinadiaService.getRutinaDiaByDia('Lunes', this.perfil).subscribe(
+        data => this.rutinaLunes = data
+        ,error => console.log(error)
+      );
+      this.rutinadiaService.getRutinaDiaByDia('Martes', this.perfil).subscribe(
+        data => this.rutinaMartes = data
+        ,error => console.log(error)
+      );
+      this.rutinadiaService.getRutinaDiaByDia('Miercoles', this.perfil).subscribe(
+        data => this.rutinaMiercoles = data
+        ,error => console.log(error)
+      );
+      this.rutinadiaService.getRutinaDiaByDia('Jueves', this.perfil).subscribe(
+        data => this.rutinaJueves = data
+        ,error => console.log(error)
+      );
+      this.rutinadiaService.getRutinaDiaByDia('Viernes', this.perfil).subscribe(
+        data => this.rutinaViernes = data
+        ,error => console.log(error)
+      );
+      this.rutinadiaService.getRutinaDiaByDia('Sabado', this.perfil).subscribe(
+        data => this.rutinaSabado = data
+        ,error => console.log(error)
+      );
+      this.rutinadiaService.getRutinaDiaByDia('Domingo', this.perfil).subscribe(
+        data => this.rutinaDomingo = data
+        ,error => console.log(error)
+      );
+    }, error => console.log(error)); 
   }
 
   public creaRutina() {

@@ -14,8 +14,8 @@ export class UsuarioService {
 
   constructor(private http: HttpClient) { }
 
-  public signupUsuario(perfil: Perfil): Observable<Perfil> {
-    return this.http.post<Perfil>(`${this.url}/signup/`, perfil);
+  public signupUsuario(perfil: Perfil) {
+    return this.http.post<any>(`${this.url}/signup/`, perfil);
   }
 
   public signinUsuario(usuario: Usuario) {

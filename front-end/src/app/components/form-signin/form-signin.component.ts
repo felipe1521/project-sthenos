@@ -22,8 +22,8 @@ export class FormSigninComponent implements OnInit {
   }
 
   public iniciarSesion() {
-    this.service.signinUsuario(this.usuario).subscribe( res => {
-        sessionStorage.setItem('token',res.token);
+    this.service.signinUsuario(this.usuario).subscribe( data => {
+        sessionStorage.setItem('token',data.token);
         this.router.navigate(['/']);
       },error => {
         console.log(error);

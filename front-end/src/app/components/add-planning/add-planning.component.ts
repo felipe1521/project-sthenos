@@ -96,11 +96,18 @@ export class AddPlanningComponent implements OnInit {
   }
 
   public finalizar() {
-    this.rutinaService.finishRutina(this.id).subscribe(
-      data => console.log(data),
-      error => console.log(error)
-    );
-    this.router.navigate(['/planning/']);
+    this.rutinaService.getRutinaById(this.id).subscribe(data => {
+      this.rutina = data;
+      console.log(this.rutina.perfil);
+      const perfil = this.rutina.perfil;
+      this.rutinaService.finishRutina(perfil, this.rutina).subscribe(
+        data => console.log(data),
+        error => console.log(error)
+      );
+      this.router.navigate(['/planning/']);
+    }, error => console.log(error)
+  );
+    
   }
 
   public cancelar() {
