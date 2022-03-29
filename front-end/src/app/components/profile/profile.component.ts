@@ -32,7 +32,10 @@ export class ProfileComponent implements OnInit {
 
   public cerrarSesion() {
     sessionStorage.removeItem('token');
-    this.router.navigate(['/']);
+    this.router.navigate(['/'])
+    .then(() => {
+      window.location.reload();
+    });
   }
 
   public editClave(id: string | undefined){

@@ -1,5 +1,9 @@
 <div class="container-fluid py-4 bg-secondary vh-100">
   <div class="row flex-column">
+    <div class="col col-sm-4 py-2 mx-auto rounded-2 alert alert-danger" role="alert" *ngIf="errorRegistro()">
+      <p>Los Datos no son Correctos. Favor vuelva a ingresarlos.</p>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
     <form (ngSubmit) = "registrarUsuario()" class="col col-sm-4 bg-dark py-4 mx-auto rounded-2">
       <h1 class="text-info text-center">Registrarse</h1>
       <div class="mb-3">
@@ -23,6 +27,9 @@
       <div class="text-info py-3">
         Si usted ya posee una cuenta puede <a class="link-secondary" routerLink="signin">Ingresar Aquí</a>
       </div>
+    </div>
+    <div class="col col-sm-4 py-2 mt-2 mx-auto rounded-2 alert alert-success" role="alert" *ngIf="exitoRegistro()">
+      <p>¡Se ha creado exitosamente su cuenta! Ahora puede iniciar sesión.</p>
     </div>
   </div>
 </div>

@@ -41,7 +41,11 @@ export class EditProfileComponent implements OnInit {
         this.perfil = data;
         console.log(data);
       }, error => console.log(error));
-      this.router.navigate(['/profile/']);
+      
+      this.router.navigate(['/profile/'])
+        .then(() => {
+          window.location.reload();
+        });
   }
 
 }

@@ -26,7 +26,10 @@ export class NavigationComponent implements OnInit {
 
   cerrarSesion() {
     sessionStorage.removeItem('token');
-    this.router.navigate(['/']);
+    this.router.navigate(['/'])
+    .then(() => {
+      window.location.reload();
+    });
   }
 
 }

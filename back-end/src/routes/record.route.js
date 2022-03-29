@@ -32,7 +32,7 @@ router.get('/stats/:id', async (req,res) => {
     const cantidades = records.map(record => record.cantidad + record.sobrecarga * 0.2);
     cantidades.forEach(cantidad => total += cantidad);
     
-    estadisticas.promedio = total / cantidades.length;
+    estadisticas.promedio = Math.trunc(total / cantidades.length);
     estadisticas.minimo = Math.min(...cantidades);
     estadisticas.maximo = Math.max(...cantidades);
     
@@ -51,19 +51,21 @@ router.get('/stats/:id', async (req,res) => {
 
 router.post('/add', async (req,res) => {
     const record = new Record(req.body);
-    const records = await Record.find();
-    if(records) {
+    const records = await Record.findOne({ejercicio: req.body.ejercicio._id, perfil: req.body.perfil._id});
+    console.log(records);
+    if(records == null) {
         await record.save();
-        res.send({error: 0, message: 'Se ha guardado el record'}); 
+        res.json({error: 0, message: 'Se ha guardado el record'}); 
     }
     const lastrecord = await Record.findOne({ejercicio: req.body.ejercicio._id}).sort({creacion: -1});
     const fecha = moment(lastrecord.creacion.toISOString());
     const actual = moment(Date.now());
+    console.log(fecha, " ",actual);
     if(actual.diff(fecha, 'days') > 7) {
         await record.save();
-        res.send({error: 0, message: 'Se ha guardado el record'});
+        res.json({error: 0, message: 'Se ha guardado el record'});
     } else {
-        res.send({error: 1, message: 'No se ha guardado el record'});
+        res.json({error: 1, message: 'No se ha guardado el record'});
     } 
 });
 

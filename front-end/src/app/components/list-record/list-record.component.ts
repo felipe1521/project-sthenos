@@ -77,6 +77,7 @@ export class ListRecordComponent implements OnInit {
     this.recordService.addRecord(this.record).subscribe(data => {
       this.respuesta = data;
       console.log(this.respuesta);
+      if(this.respuesta.error == 0) window.location.reload();
     }, err => console.log("Se ha producido un error: "+err)
     );
   }

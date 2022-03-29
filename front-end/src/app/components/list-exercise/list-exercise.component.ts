@@ -39,6 +39,7 @@ export class ListExerciseComponent implements OnInit {
   }
 
   public buscarEjercicio() {
+    this.categoria = new Categoria();
     console.log(this.getejercicio.nombre);
     this.ejercicioService.getEjercicioByNombre(this.getejercicio.nombre).subscribe(
       data => {

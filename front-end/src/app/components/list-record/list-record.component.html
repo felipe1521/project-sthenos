@@ -22,7 +22,7 @@
           </thead>
           <tbody>
           <tr *ngFor="let record of records">
-            <td scope="row">{{record.cantidad}}</td>
+            <td scope="row">{{record.cantidad}} (Reps/Segs)</td>
             <td scope="row">{{record.creacion | date:'short'}}</td>
             <th scope="row">{{record.sobrecarga || 0}}</th>
             <td scope="row"><button class="btn btn-danger" (click)="deleteRecord(record._id)">Borrar</button></td>

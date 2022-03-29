@@ -10,7 +10,7 @@ router.get('/:_id', async (req,res) => {
 });
 
 router.post('/add', async (req,res) => {
-    const {nombre, apellido, peso, estatura, usuario} = req.body;
+    const {nombre, apellido, telefono, usuario} = req.body;
     const user = new Usuario({
         correo: usuario.correo,
         clave: await Usuario.encryptPass(usuario.clave),
@@ -20,8 +20,7 @@ router.post('/add', async (req,res) => {
     const perfil = new Perfil({
         nombre, 
         apellido, 
-        peso,
-        estatura,
+        telefono,
         usuario: await Usuario.findOne({correo: usuario.correo})
     });
     await perfil.save();

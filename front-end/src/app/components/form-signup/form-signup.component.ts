@@ -13,6 +13,7 @@ export class FormSignupComponent implements OnInit {
 
   public usuario: Usuario;
   public perfil: Perfil;
+  public error: number = 0; 
 
   constructor(private router: Router, private service: UsuarioService) {
     this.usuario = new Usuario(); 
@@ -25,12 +26,21 @@ export class FormSignupComponent implements OnInit {
   public registrarUsuario() {
     this.perfil.usuario = this.usuario;
     this.service.signupUsuario(this.perfil).subscribe(data => {
-        console.log("Se ha registrado Correctmente el usuario.");
-        sessionStorage.setItem('token',data.token);
-        this.router.navigate(['/']);
-      },
-      err => console.log("Se ha producido un error: "+err)
-    );
+        console.log("Se ha registrado Correctamente el usuario.");
+        this.error = 2;
+        //this.router.navigate(['/signin']);
+      },error => {
+        console.log("Se ha producido un error: "+error);
+        this.error = 1;
+      });
+  }
+
+  public errorRegistro() {
+    return this.error == 1 ? true: false;
+  }
+
+  public exitoRegistro() {
+   return this.error == 2 ? true: false;
   }
 
 }
