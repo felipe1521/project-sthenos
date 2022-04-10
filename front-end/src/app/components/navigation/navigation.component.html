@@ -8,22 +8,22 @@
     <div class="collapse navbar-collapse ms-5" id="navbarScroll">
       <ul class="navbar-nav my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100%;">
         <li class="nav-item">
-          <a class="nav-link text-info" routerLink="exercises">Ejercicios</a>
+          <a class="nav-link text-info" (click)="cambiarTab('exercises')" style="cursor: pointer;">Ejercicios</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-info" *ngIf="estaLogeado()" routerLink="records">Records</a>
+          <a class="nav-link text-info" *ngIf="estaLogeado()" (click)="cambiarTab('records')" style="cursor: pointer;">Records</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-info" *ngIf="estaLogeado()" routerLink="planning">Planificación</a>
+          <a class="nav-link text-info" *ngIf="estaLogeado()" (click)="cambiarTab('planning')" style="cursor: pointer;">Planificación</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-info" *ngIf="!estaLogeado()" routerLink="signup">Registrarse</a>
+          <a class="nav-link text-info" *ngIf="!estaLogeado()" (click)="cambiarTab('signup')" style="cursor: pointer;">Registrarse</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-info" *ngIf="!estaLogeado()" routerLink="signin">Ingresar</a>
+          <a class="nav-link text-info" *ngIf="!estaLogeado()" (click)="cambiarTab('signin')" style="cursor: pointer;">Ingresar</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-info" *ngIf="estaLogeado()" routerLink="profile">Perfil</a>
+          <a class="nav-link text-info" *ngIf="estaLogeado()" (click)="cambiarTab('profile')" style="cursor: pointer;">Perfil</a>
         </li>
         <li>
           <i class="bi bi-list mobile-nav-toggle"></i>

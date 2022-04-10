@@ -32,4 +32,9 @@ export class NavigationComponent implements OnInit {
     });
   }
 
+  cambiarTab(tab: string) {
+   this.router.navigate([tab]).then(() => {
+    window.location.reload();
+    });
+  }
 }
