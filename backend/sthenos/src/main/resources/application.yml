@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: sthenos
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/project_sthenos_db
+    username: postgres
+    password: flp1521
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
