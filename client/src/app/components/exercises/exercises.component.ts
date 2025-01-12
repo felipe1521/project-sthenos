@@ -13,12 +13,12 @@ import { CommonModule } from '@angular/common';
 })
 export class ExercisesComponent implements OnInit {
 
-  public exercises$: any;
-  public exercise$: any;
+  public exercises: any;
   public exerciseService = inject(ExercisesService);
 
-  async ngOnInit() {
-    this.exercises$ = await this.exerciseService.getExercises();
-    this.exercise$ = await this.exerciseService.getExerciseID(this.exercises$[0].id);
+  ngOnInit() {
+    this.exerciseService.getExercises().subscribe({
+      next: (response) => this.exercises = response
+    });
   }
 }
