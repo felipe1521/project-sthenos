@@ -28,7 +28,7 @@ public class RoutinedayController {
 		return new ResponseEntity<>(routineDayService.getAllRoutineday(), HttpStatus.ACCEPTED);
 	}
 	@GetMapping("/app/routineDay/{id}")
-	public ResponseEntity<Routineday> getRoutinedayById(@PathVariable("id") Integer id) {
+	public ResponseEntity<Routineday> getRoutinedayById(@PathVariable Integer id) {
 		return new ResponseEntity<>(routineDayService.getRoutinedayById(id), HttpStatus.ACCEPTED);
 	}
 	@PostMapping("/app/routineDay/add")
@@ -40,7 +40,7 @@ public class RoutinedayController {
 		return new ResponseEntity<>(routineDayService.editRoutineday(routineDay), HttpStatus.CREATED);
 	}
 	@DeleteMapping("/app/routineDay/delete/{id}")
-	public ResponseEntity<Routineday> deleteRoutinedayById(@PathVariable("id") Integer id) {
+	public ResponseEntity<Routineday> deleteRoutinedayById(@PathVariable Integer id) {
 		routineDayService.deleteRoutinedayById(id);
 		return new ResponseEntity<>(null, HttpStatus.OK);
 	}

@@ -28,7 +28,7 @@ public class RecordController {
 		return new ResponseEntity<>(recordService.getAllRecord(), HttpStatus.ACCEPTED);
 	}
 	@GetMapping("/app/record/{id}")
-	public ResponseEntity<Record> getRecordById(@PathVariable("id") Integer id) {
+	public ResponseEntity<Record> getRecordById(@PathVariable Integer id) {
 		return new ResponseEntity<>(recordService.getRecordById(id), HttpStatus.ACCEPTED);
 	}
 	@PostMapping("/app/record/add")
@@ -40,7 +40,7 @@ public class RecordController {
 		return new ResponseEntity<>(recordService.editRecord(record), HttpStatus.CREATED);
 	}
 	@DeleteMapping("/app/record/delete/{id}")
-	public ResponseEntity<Record> deleteRecordById(@PathVariable("id") Integer id) {
+	public ResponseEntity<Record> deleteRecordById(@PathVariable Integer id) {
 		recordService.deleteRecordById(id);
 		return new ResponseEntity<>(null, HttpStatus.OK);
 	}
