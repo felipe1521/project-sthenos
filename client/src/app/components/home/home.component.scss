@@ -1,0 +1,11 @@
+.section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 40%;
+}
+
+.container {
+    justify-content: space-around;
+}

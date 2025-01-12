@@ -28,7 +28,7 @@ public class RoutineController {
 		return new ResponseEntity<>(routineService.getAllRoutine(), HttpStatus.ACCEPTED);
 	}
 	@GetMapping("/app/routine/{id}")
-	public ResponseEntity<Routine> getRoutineById(@PathVariable("id") Integer id) {
+	public ResponseEntity<Routine> getRoutineById(@PathVariable Integer id) {
 		return new ResponseEntity<>(routineService.getRoutineById(id), HttpStatus.ACCEPTED);
 	}
 	@PostMapping("/app/routine/add")
@@ -40,7 +40,7 @@ public class RoutineController {
 		return new ResponseEntity<>(routineService.editRoutine(routine), HttpStatus.CREATED);
 	}
 	@DeleteMapping("/app/routine/delete/{id}")
-	public ResponseEntity<Routine> deleteRoutineById(@PathVariable("id") Integer id) {
+	public ResponseEntity<Routine> deleteRoutineById(@PathVariable Integer id) {
 		routineService.deleteRoutineById(id);
 		return new ResponseEntity<>(null, HttpStatus.OK);
 	}

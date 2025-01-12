@@ -28,7 +28,7 @@ public class CategoryController {
 		return new ResponseEntity<>(categoryService.getAllCategory(), HttpStatus.ACCEPTED);
 	}
 	@GetMapping("/app/category/{id}")
-	public ResponseEntity<Category> getCategoryById(@PathVariable("id") Integer id) {
+	public ResponseEntity<Category> getCategoryById(@PathVariable Integer id) {
 		return new ResponseEntity<>(categoryService.getCategoryById(id), HttpStatus.ACCEPTED);
 	}
 	@PostMapping("/app/category/add")
@@ -40,7 +40,7 @@ public class CategoryController {
 		return new ResponseEntity<>(categoryService.editCategory(category), HttpStatus.CREATED);
 	}
 	@DeleteMapping("/app/category/delete/{id}")
-	public ResponseEntity<Category> deleteCategoryById(@PathVariable("id") Integer id) {
+	public ResponseEntity<Category> deleteCategoryById(@PathVariable Integer id) {
 		categoryService.deleteCategoryById(id);
 		return new ResponseEntity<>(null, HttpStatus.OK);
 	}

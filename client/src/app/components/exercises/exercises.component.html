@@ -1,0 +1,17 @@
+<h1>Ejercicios</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Codigo</th>
+            <th>Nombre</th>
+            <th>Categoria</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let exercise of exercises$">
+            <td>{{exercise.id}}</td>
+            <td>{{exercise.name}}</td>
+            <td>{{exercise.category.name}}</td>
+        </tr>
+    </tbody>
+</table>
